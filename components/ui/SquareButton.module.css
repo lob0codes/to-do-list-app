@@ -1,0 +1,20 @@
+.square-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-width: 0.3rem;
+  border-color: var(--secondary-color);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.square-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.icon {
+  color: var(--secondary-color);
+  stroke-width: 3;
+}

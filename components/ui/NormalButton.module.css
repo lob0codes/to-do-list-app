@@ -1,0 +1,24 @@
+.button {
+  font-size: 1.3rem;
+  font-weight: 500;
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 6rem;
+}
+
+.button:hover,
+.button:focus {
+  opacity: 0.8;
+}
+
+.standard {
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+}
+
+.delete {
+  background-color: var(--delete-button-background);
+  color: var(--accent-color);
+}
