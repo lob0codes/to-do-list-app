@@ -10,7 +10,7 @@ export default function TodoItem({ description }: { description: string }) {
     <article className={classes["todo-item"]}>
       <SquareButton className={classes["square-button"]} />
       <p className={classes.description}>{description}</p>
-      <NormalButton type={ButtonType.DELETE}>Delete</NormalButton>
+      <NormalButton customType={ButtonType.DELETE}>Delete</NormalButton>
     </article>
   );
 }

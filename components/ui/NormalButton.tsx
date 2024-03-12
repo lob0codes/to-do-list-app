@@ -4,8 +4,9 @@ import { cn } from "@/lib/utils";
 
 import { ButtonType } from "@/enums";
 
-interface NormalButtonProps {
-  type: ButtonType;
+interface NormalButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  customType: ButtonType;
   className?: string;
   children: React.ReactNode;
 }
@@ -22,14 +23,18 @@ function getButtonType(style: string) {
 }
 
 export default function NormalButton({
-  type,
+  customType,
   className,
   children,
+  ...rest
 }: NormalButtonProps) {
-  const buttonType: string = getButtonType(type);
+  const buttonType: string = getButtonType(customType);
 
   return (
-    <button className={cn(classes.button, className, classes[buttonType])}>
+    <button
+      className={cn(classes.button, className, classes[buttonType])}
+      {...rest}
+    >
       {children}
     </button>
   );
