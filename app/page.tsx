@@ -4,6 +4,7 @@ import classes from "@/app/page.module.css";
 
 import TodoForm from "@/components/TodoForm";
 import TodoItem from "@/components/TodoItem";
+import TodoList from "@/components/TodoList";
 import { useState } from "react";
 
 const todos: string[] = [
@@ -15,21 +16,19 @@ const todos: string[] = [
 export default function Home() {
   const [todoList, setTodos] = useState(todos);
 
-  function formSubmitHandler(todoDescription: string | undefined) {
+  function addNewTodo(todoDescription: string | undefined) {
     if (todoDescription) {
       setTodos((prevState) => [...prevState, todoDescription]);
     }
   }
 
+  function deleteTodo() {}
+
   return (
     <>
       <h1 className={classes.header}>Awesome TO-DO List</h1>
-      <TodoForm onSubmit={formSubmitHandler} />
-      <section className={classes["todo-list"]}>
-        {todoList.map((todo) => (
-          <TodoItem key={todo} description={todo} />
-        ))}
-      </section>
+      <TodoForm onSubmit={addNewTodo} />
+      <TodoList todos={todoList} />
     </>
   );
 }

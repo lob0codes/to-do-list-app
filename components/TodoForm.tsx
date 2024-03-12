@@ -8,14 +8,14 @@ interface TodoFormProps {
 }
 
 export default function TodoForm({ onSubmit }: TodoFormProps) {
-  function test(formData: FormData) {
+  function formSubmitHandler(formData: FormData) {
     const todoDescription = formData.get("todo")?.toString();
     onSubmit(todoDescription);
   }
 
   return (
     <section className={classes["todo-form"]}>
-      <form action={test} className={classes.form}>
+      <form action={formSubmitHandler} className={classes.form}>
         <label htmlFor="todo" className={classes.label}>
           Type new task:
         </label>

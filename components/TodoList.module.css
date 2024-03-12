@@ -1,0 +1,16 @@
+.todo-list {
+  border: 0.2rem solid rgba(26, 18, 11, 0.3);
+  box-shadow: 0 0 0.2rem rgba(26, 18, 11, 0.5);
+  border-radius: 0.5rem;
+  margin: 0 auto;
+  justify-content: center;
+  width: 80rem;
+  padding: 4rem 1rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
