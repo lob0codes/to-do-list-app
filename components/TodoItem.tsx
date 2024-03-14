@@ -4,13 +4,25 @@ import SquareButton from "./ui/SquareButton";
 import NormalButton from "./ui/NormalButton";
 
 import { ButtonType } from "@/enums";
+import { TodoModel } from "@/utils/classes";
 
-export default function TodoItem({ description }: { description: string }) {
+interface TodoItemProps {
+  todo: TodoModel;
+  onDelete: (id: number) => void;
+}
+
+export default function TodoItem({ todo, onDelete }: TodoItemProps) {
+  function itemDeleteHandler() {
+    onDelete(todo.id);
+  }
+
   return (
     <article className={classes["todo-item"]}>
       <SquareButton className={classes["square-button"]} />
-      <p className={classes.description}>{description}</p>
-      <NormalButton customType={ButtonType.DELETE}>Delete</NormalButton>
+      <p className={classes.description}>{todo.description}</p>
+      <NormalButton customType={ButtonType.DELETE} onClick={itemDeleteHandler}>
+        Delete
+      </NormalButton>
     </article>
   );
 }

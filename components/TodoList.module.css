@@ -14,3 +14,9 @@
   align-items: flex-start;
   gap: 2rem;
 }
+
+.empty-todos {
+  font-size: 1.6rem;
+  align-self: center;
+  font-weight: 700;
+}

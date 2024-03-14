@@ -3,32 +3,50 @@
 import classes from "@/app/page.module.css";
 
 import TodoForm from "@/components/TodoForm";
-import TodoItem from "@/components/TodoItem";
 import TodoList from "@/components/TodoList";
+import { TodoModel } from "@/utils/classes";
 import { useState } from "react";
 
-const todos: string[] = [
-  "Lorem ipsum, dolor sit amet consectetur adipisicing.",
-  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, architecto.",
-  "Lorem ipsum, dolor sit amet consectetur adipisicing.",
+const todos: TodoModel[] = [
+  new TodoModel("Lorem ipsum, dolor sit amet consectetur adipisicing.", 1),
+  new TodoModel(
+    "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, architecto.",
+    2
+  ),
+  new TodoModel("Lorem ipsum, dolor sit amet consectetur adipisicing.", 3),
 ];
 
 export default function Home() {
   const [todoList, setTodos] = useState(todos);
 
   function addNewTodo(todoDescription: string | undefined) {
-    if (todoDescription) {
-      setTodos((prevState) => [...prevState, todoDescription]);
+    if (!todoDescription) {
+      return;
     }
+
+    let newTodo: TodoModel;
+
+    if (todoList.length === 0) {
+      newTodo = new TodoModel(todoDescription, 1);
+    } else {
+      const latestId = todoList[todoList.length - 1].id;
+
+      newTodo = new TodoModel(todoDescription, latestId + 1);
+    }
+    setTodos((prevState) => [...prevState, newTodo]);
   }
 
-  function deleteTodo() {}
+  function deleteTodo(id: number) {
+    //Is not required to create a new object with the data of prevState to avoid mutating prevState, because function "Filter"
+    //returns a new object and doesn't mutate the orignal state.
+    setTodos((prevState) => prevState.filter((todo) => todo.id !== id));
+  }
 
   return (
     <>
       <h1 className={classes.header}>Awesome TO-DO List</h1>
       <TodoForm onSubmit={addNewTodo} />
-      <TodoList todos={todoList} />
+      <TodoList todos={todoList} onDelete={deleteTodo} />
     </>
   );
 }
