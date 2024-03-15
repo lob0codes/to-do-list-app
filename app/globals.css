@@ -95,6 +95,11 @@
   padding: var(--padding-vertical) 2rem;
 }
 
+.block--horizontal {
+  --padding-vertical: 0;
+  padding: var(--padding-vertical) 2rem;
+}
+
 .container {
   max-width: 1140px;
   margin: 0 auto;

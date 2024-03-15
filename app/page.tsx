@@ -45,8 +45,10 @@ export default function Home() {
   return (
     <>
       <h1 className={classes.header}>Awesome TO-DO List</h1>
-      <TodoForm onSubmit={addNewTodo} />
-      <TodoList todos={todoList} onDelete={deleteTodo} />
+      <div className="block--horizontal">
+        <TodoForm onSubmit={addNewTodo} />
+        <TodoList todos={todoList} onDelete={deleteTodo} />
+      </div>
     </>
   );
 }

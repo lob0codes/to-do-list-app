@@ -9,6 +9,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 .label {
@@ -24,4 +25,23 @@
   font-size: 1.4rem;
   font-weight: 400;
   background-color: #d8d8d8;
+}
+
+@media (max-width: 35rem) {
+  .label {
+    width: 100%;
+  }
+  .form {
+    justify-content: flex-start;
+  }
+
+  .add-button {
+    height: 100%;
+  }
+}
+
+@media (max-width: 44rem) {
+  .input {
+    width: 30rem;
+  }
 }

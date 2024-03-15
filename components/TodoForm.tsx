@@ -21,7 +21,11 @@ export default function TodoForm({ onSubmit }: TodoFormProps) {
           Type new task:
         </label>
         <input type="text" id="todo" name="todo" className={classes.input} />
-        <NormalButton customType={ButtonType.STANDARD} type="submit">
+        <NormalButton
+          className={classes["add-button"]}
+          customType={ButtonType.STANDARD}
+          type="submit"
+        >
           Add
         </NormalButton>
       </form>

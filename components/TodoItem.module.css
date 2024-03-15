@@ -12,7 +12,7 @@
 }
 
 .delete-button {
-  background-color: var(--delete-button-background);
+  flex-shrink: 0;
 }
 
 .square-button {

@@ -20,7 +20,11 @@ export default function TodoItem({ todo, onDelete }: TodoItemProps) {
     <article className={classes["todo-item"]}>
       <SquareButton className={classes["square-button"]} />
       <p className={classes.description}>{todo.description}</p>
-      <NormalButton customType={ButtonType.DELETE} onClick={itemDeleteHandler}>
+      <NormalButton
+        customType={ButtonType.DELETE}
+        onClick={itemDeleteHandler}
+        className={classes["delete-button"]}
+      >
         Delete
       </NormalButton>
     </article>
