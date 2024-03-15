@@ -45,3 +45,9 @@
     width: 30rem;
   }
 }
+
+@media (max-width: 420px) {
+  .input {
+    width: 20rem;
+  }
+}
