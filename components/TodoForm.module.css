@@ -9,12 +9,12 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  flex-wrap: wrap;
 }
 
 .label {
   font-size: 1.6rem;
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .input {
@@ -27,27 +27,22 @@
   background-color: #d8d8d8;
 }
 
-@media (max-width: 35rem) {
-  .label {
-    width: 100%;
+.add-button {
+  flex-shrink: 0;
+}
+
+@media (max-width: 680px) {
+  .input {
+    flex-shrink: 1;
   }
+}
+
+@media (max-width: 410px) {
   .form {
-    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
-  .add-button {
-    height: 100%;
-  }
-}
-
-@media (max-width: 44rem) {
   .input {
-    width: 30rem;
-  }
-}
-
-@media (max-width: 420px) {
-  .input {
-    width: 20rem;
+    height: 2.4rem;
   }
 }

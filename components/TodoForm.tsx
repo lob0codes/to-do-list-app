@@ -10,7 +10,6 @@ interface TodoFormProps {
 export default function TodoForm({ onSubmit }: TodoFormProps) {
   function formSubmitHandler(formData: FormData) {
     const todoDescription = formData.get("todo")?.toString();
-    console.log(todoDescription);
     onSubmit(todoDescription);
   }
 
