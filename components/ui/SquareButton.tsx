@@ -7,11 +7,19 @@ import { useState } from "react";
 
 import { Check } from "lucide-react";
 
-export default function SquareButton({ className }: { className: string }) {
-  const [isPressed, setIsPressed] = useState(false);
+interface SquareButtonProps {
+  className: string;
+  onClick: () => void;
+  isPressed: boolean;
+}
 
+export default function SquareButton({
+  className,
+  onClick,
+  isPressed,
+}: SquareButtonProps) {
   function buttonPressedHandler() {
-    setIsPressed((prevState) => !prevState);
+    onClick();
   }
 
   return (

@@ -126,3 +126,7 @@ h3 {
 h1 {
   font-size: 5rem;
 }
+
+.crossed-out {
+  text-decoration: line-through;
+}

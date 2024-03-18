@@ -5,7 +5,10 @@ import classes from "@/app/page.module.css";
 import TodoForm from "@/components/TodoForm";
 import TodoList from "@/components/TodoList";
 import { TodoModel } from "@/utils/classes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { TodoListType } from "@/enums";
+
+import { cn } from "@/lib/utils";
 
 const todos: TodoModel[] = [
   new TodoModel("Lorem ipsum, dolor sit amet consectetur adipisicing.", 1),
@@ -17,7 +20,7 @@ const todos: TodoModel[] = [
 ];
 
 export default function Home() {
-  const [todoList, setTodos] = useState(todos);
+  const [todoList, setTodos] = useState<TodoModel[]>(todos);
 
   function addNewTodo(todoDescription: string | undefined) {
     if (!todoDescription) {
@@ -42,13 +45,42 @@ export default function Home() {
     setTodos((prevState) => prevState.filter((todo) => todo.id !== id));
   }
 
+  function changeCompletedStatus(id: number) {
+    setTodos((prevTodoList) => {
+      const updatedTodoList = prevTodoList.map((todo) => {
+        if (todo.id === id) {
+          return {
+            description: todo.description,
+            id: todo.id,
+            completed: !todo.completed,
+          } as TodoModel;
+        }
+        return todo;
+      });
+      return updatedTodoList;
+    });
+  }
+
   return (
     <>
-      <h1 className={classes.header}>Awesome TO-DO List</h1>
-      <div className="block--horizontal">
-        <TodoForm onSubmit={addNewTodo} />
-        <TodoList todos={todoList} onDelete={deleteTodo} />
-      </div>
+      <header className={classes.header}>
+        <h1 className={classes.title}>Awesome TO-DO List</h1>
+        <TodoForm onSubmit={addNewTodo} className="block--horizontal" />
+      </header>
+      <section className={cn("block--horizontal", classes.content)}>
+        <TodoList
+          todos={todoList}
+          onDelete={deleteTodo}
+          onCompleted={changeCompletedStatus}
+          type={TodoListType.NORMAL}
+        />
+        <TodoList
+          todos={todoList}
+          onDelete={deleteTodo}
+          onCompleted={changeCompletedStatus}
+          type={TodoListType.COMPLETED}
+        />
+      </section>
     </>
   );
 }
