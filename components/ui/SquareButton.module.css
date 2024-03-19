@@ -9,6 +9,10 @@
   justify-content: center;
 }
 
+.pressed {
+  background-color: var(--accent-color);
+}
+
 .square-button:hover {
   cursor: pointer;
   opacity: 0.8;

@@ -5,7 +5,7 @@ import classes from "@/app/page.module.css";
 import TodoForm from "@/components/TodoForm";
 import TodoList from "@/components/TodoList";
 import { TodoModel } from "@/utils/classes";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TodoListType } from "@/enums";
 
 import { cn } from "@/lib/utils";

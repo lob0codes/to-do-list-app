@@ -24,7 +24,11 @@ export default function SquareButton({
 
   return (
     <article
-      className={cn(className, classes["square-button"])}
+      className={cn(
+        className,
+        classes["square-button"],
+        isPressed && classes.pressed
+      )}
       onClick={buttonPressedHandler}
     >
       <Check className={cn(isPressed ? undefined : "hidden", classes.icon)} />

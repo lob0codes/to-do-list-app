@@ -18,27 +18,34 @@ export default function TodoList({
   type: TodoListType;
 }) {
   let todosFiltered: TodoModel[];
+  let noTodosContent;
   if (type === TodoListType.COMPLETED) {
     todosFiltered = todos.filter((todo) => todo.completed);
+    noTodosContent = (
+      <p className={classes["empty-todos"]}>
+        There are no completed todos to show.
+      </p>
+    );
   } else {
     todosFiltered = todos.filter((todo) => !todo.completed);
+    noTodosContent = (
+      <p className={classes["empty-todos"]}>There are no todos to show.</p>
+    );
   }
   return (
     <article className={cn(className, classes["todo-list"])}>
       <section className={classes.main}>
-        {todosFiltered.length === 0 ? (
-          <p className={classes["empty-todos"]}>There are no todos to show.</p>
-        ) : (
-          todosFiltered.map((todo) => (
-            <TodoItem
-              key={todo.id}
-              todo={todo}
-              onDelete={onDelete}
-              onCompleted={onCompleted}
-              crossedOut={type === TodoListType.COMPLETED ? true : false}
-            />
-          ))
-        )}
+        {todosFiltered.length === 0
+          ? noTodosContent
+          : todosFiltered.map((todo) => (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                onDelete={onDelete}
+                onCompleted={onCompleted}
+                crossedOut={type === TodoListType.COMPLETED ? true : false}
+              />
+            ))}
       </section>
     </article>
   );

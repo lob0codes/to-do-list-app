@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
+
 import { Roboto } from "next/font/google";
+
 import "./globals.css";
+
+import { Analytics } from "@vercel/analytics/react";
 
 const robotoFont = Roboto({
   subsets: ["latin"],
@@ -19,7 +23,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={robotoFont.className}>{children}</body>
+      <body className={robotoFont.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
