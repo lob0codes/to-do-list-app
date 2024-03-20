@@ -9,6 +9,7 @@ import { useState } from "react";
 import { TodoListType } from "@/enums";
 
 import { cn } from "@/lib/utils";
+import { Separator } from "@/components/ui/separator";
 
 const todos: TodoModel[] = [
   new TodoModel("Lorem ipsum, dolor sit amet consectetur adipisicing.", 1),
@@ -64,16 +65,23 @@ export default function Home() {
   return (
     <>
       <header className={classes.header}>
-        <h1 className={classes.title}>Awesome TO-DO List</h1>
+        <h1 className={classes.title}>
+          Awesome <span className={classes["title-highlight"]}>TO-DO</span> List
+        </h1>
         <TodoForm onSubmit={addNewTodo} className="block--horizontal" />
       </header>
       <section className={cn("block--horizontal", classes.content)}>
+        <h2>Pending TO-DOs</h2>
         <TodoList
           todos={todoList}
           onDelete={deleteTodo}
           onCompleted={changeCompletedStatus}
           type={TodoListType.NORMAL}
         />
+
+        <Separator className={classes.separator} />
+
+        <h2>Completed TO-DOs</h2>
         <TodoList
           todos={todoList}
           onDelete={deleteTodo}

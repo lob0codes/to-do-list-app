@@ -112,6 +112,7 @@ html {
 body {
   background-color: var(--background-color);
   min-height: 100vh;
+  /* height: 100%; */
   margin: 0;
 }
 
@@ -125,6 +126,10 @@ h3 {
 
 h1 {
   font-size: 5rem;
+}
+
+h2 {
+  font-size: 3rem;
 }
 
 .crossed-out {

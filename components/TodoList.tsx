@@ -1,8 +1,10 @@
 import { TodoModel } from "@/utils/classes";
 import TodoItem from "./TodoItem";
 import classes from "@/components/TodoList.module.css";
-import { cn } from "@/lib/utils";
 import { TodoListType } from "@/enums";
+
+import { EllipsisVertical } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 export default function TodoList({
   todos,
@@ -34,6 +36,11 @@ export default function TodoList({
   }
   return (
     <article className={cn(className, classes["todo-list"])}>
+      <section className={classes.header}>
+        <div className={classes["header-icon"]}>
+          <EllipsisVertical size={22} />
+        </div>
+      </section>
       <section className={classes.main}>
         {todosFiltered.length === 0
           ? noTodosContent

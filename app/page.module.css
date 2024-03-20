@@ -5,8 +5,22 @@
   line-height: 6rem;
 }
 
+.title-highlight {
+  color: #aba178;
+  font-style: italic;
+  font-weight: 600;
+}
+
 .content {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.separator {
+  background-color: var(--accent-color);
+  max-width: 75rem;
+  width: 100%;
 }
