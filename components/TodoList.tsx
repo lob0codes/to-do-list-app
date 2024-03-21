@@ -3,19 +3,23 @@ import TodoItem from "./TodoItem";
 import classes from "@/components/TodoList.module.css";
 import { TodoListType } from "@/enums";
 
-import { EllipsisVertical } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import TodoListHeader from "./TodoListHeader";
 
 export default function TodoList({
   todos,
   onDelete,
   onCompleted,
+  onDeleteAll,
   className,
   type,
 }: {
   todos: TodoModel[];
   onDelete: (id: number) => void;
   onCompleted: (id: number) => void;
+  onDeleteAll: (listType: TodoListType) => void;
   className?: string;
   type: TodoListType;
 }) {
@@ -34,13 +38,14 @@ export default function TodoList({
       <p className={classes["empty-todos"]}>There are no todos to show.</p>
     );
   }
+
+  function deleteAllTodosHandler() {
+    onDeleteAll(type);
+  }
+
   return (
     <article className={cn(className, classes["todo-list"])}>
-      <section className={classes.header}>
-        <div className={classes["header-icon"]}>
-          <EllipsisVertical size={22} />
-        </div>
-      </section>
+      <TodoListHeader todos={todosFiltered} />
       <section className={classes.main}>
         {todosFiltered.length === 0
           ? noTodosContent

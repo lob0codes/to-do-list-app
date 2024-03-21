@@ -62,6 +62,10 @@ export default function Home() {
     });
   }
 
+  function deleteAllTodos(listType: TodoListType) {
+    setTodos([]);
+  }
+
   return (
     <>
       <header className={classes.header}>
@@ -75,6 +79,7 @@ export default function Home() {
         <TodoList
           todos={todoList}
           onDelete={deleteTodo}
+          onDeleteAll={deleteAllTodos}
           onCompleted={changeCompletedStatus}
           type={TodoListType.NORMAL}
         />
@@ -85,6 +90,7 @@ export default function Home() {
         <TodoList
           todos={todoList}
           onDelete={deleteTodo}
+          onDeleteAll={deleteAllTodos}
           onCompleted={changeCompletedStatus}
           type={TodoListType.COMPLETED}
         />

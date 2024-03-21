@@ -1,0 +1,54 @@
+.header {
+  margin-bottom: 1.7rem;
+  display: flex;
+}
+
+.header__icon-container {
+  margin-left: auto;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.4s;
+}
+
+.header__icon-container:hover {
+  background-color: var(--accent-color);
+}
+
+.delete-confirmation {
+  border: 0.2rem solid rgba(26, 18, 11, 0.3);
+  box-shadow: 0 0 0.2rem rgba(26, 18, 11, 0.5);
+  border-radius: 0.5rem;
+  background-color: var(--background-color);
+  width: 20rem;
+  padding: 1rem;
+}
+
+.popover-close {
+  font-size: 1.3rem;
+  font-weight: 500;
+  background-color: var(--primary-color);
+  color: var(--accent-color);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 6rem;
+  -webkit-tap-highlight-color: initial;
+}
+
+.popover-close:hover,
+.popover-close:focus {
+  opacity: 0.8;
+  outline: none;
+}
+
+.confirmation-description {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.confirmation-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 1rem;
+}
