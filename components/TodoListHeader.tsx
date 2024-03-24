@@ -6,6 +6,8 @@ import { Trash2 } from "lucide-react";
 import { TodoModel } from "@/utils/classes";
 import NormalButton from "./ui/NormalButton";
 import { ButtonType } from "@/enums";
+import PopoverCustomContent from "./PopoverCustomContent";
+import { on } from "stream";
 
 interface TodoListHeaderProps {
   todos: TodoModel[];
@@ -19,14 +21,15 @@ export default function TodoListHeader({
   return (
     <section className={classes.header}>
       {todos.length !== 0 && (
-        <Popover.Root>
+        <Popover.Root modal={true}>
           <Popover.Trigger asChild>
             <div className={classes["header__icon-container"]}>
               <Trash2 className={classes.header__icon} size={22} />
             </div>
           </Popover.Trigger>
           <Popover.Portal>
-            <Popover.Content
+            <PopoverCustomContent onDeleteAll={onDeleteAll} />
+            {/* <Popover.Content
               side="top"
               sideOffset={-1}
               align="start"
@@ -47,7 +50,7 @@ export default function TodoListHeader({
                   Yes
                 </NormalButton>
               </div>
-            </Popover.Content>
+            </Popover.Content> */}
           </Popover.Portal>
         </Popover.Root>
       )}
