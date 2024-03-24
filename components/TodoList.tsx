@@ -3,9 +3,7 @@ import TodoItem from "./TodoItem";
 import classes from "@/components/TodoList.module.css";
 import { TodoListType } from "@/enums";
 
-import { Trash2 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import TodoListHeader from "./TodoListHeader";
 
 export default function TodoList({
@@ -45,7 +43,10 @@ export default function TodoList({
 
   return (
     <article className={cn(className, classes["todo-list"])}>
-      <TodoListHeader todos={todosFiltered} />
+      <TodoListHeader
+        todos={todosFiltered}
+        onDeleteAll={deleteAllTodosHandler}
+      />
       <section className={classes.main}>
         {todosFiltered.length === 0
           ? noTodosContent

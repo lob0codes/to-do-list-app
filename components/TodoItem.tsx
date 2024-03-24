@@ -36,9 +36,11 @@ export default function TodoItem({
         isPressed={todo.completed}
         onClick={completedStatusChangeHandler}
       />
+
       <p className={cn(crossedOut ? "crossed-out" : "", classes.description)}>
         {todo.description}
       </p>
+
       <NormalButton
         customType={ButtonType.DELETE}
         onClick={itemDeleteHandler}

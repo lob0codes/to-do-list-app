@@ -7,7 +7,15 @@ import { TodoModel } from "@/utils/classes";
 import NormalButton from "./ui/NormalButton";
 import { ButtonType } from "@/enums";
 
-export default function TodoListHeader({ todos }: { todos: TodoModel[] }) {
+interface TodoListHeaderProps {
+  todos: TodoModel[];
+  onDeleteAll: () => void;
+}
+
+export default function TodoListHeader({
+  todos,
+  onDeleteAll,
+}: TodoListHeaderProps) {
   return (
     <section className={classes.header}>
       {todos.length !== 0 && (
@@ -32,7 +40,12 @@ export default function TodoListHeader({ todos }: { todos: TodoModel[] }) {
                 <Popover.Close className={classes["popover-close"]}>
                   No
                 </Popover.Close>
-                <NormalButton customType={ButtonType.DELETE}>Yes</NormalButton>
+                <NormalButton
+                  customType={ButtonType.DELETE}
+                  onClick={onDeleteAll}
+                >
+                  Yes
+                </NormalButton>
               </div>
             </Popover.Content>
           </Popover.Portal>

@@ -63,7 +63,19 @@ export default function Home() {
   }
 
   function deleteAllTodos(listType: TodoListType) {
-    setTodos([]);
+    console.log(listType);
+    console.log(listType === TodoListType.NORMAL);
+
+    let filteredList;
+
+    if (listType === TodoListType.NORMAL) {
+      filteredList = todoList.filter((todo) => todo.completed);
+      console.log(filteredList);
+    } else {
+      filteredList = todoList.filter((todo) => !todo.completed);
+    }
+
+    setTodos(filteredList);
   }
 
   return (
